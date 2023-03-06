@@ -1,8 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import styles from './layout.module.css';
-import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
+import styles from '../styles/utils.module.css';
 
 const name = 'Your Name';
 
@@ -10,7 +9,7 @@ export const siteTitle = 'Next.js Sample Website';
 
 export default ({ children, home }) => {
   return (
-    <div className={styles.container}>
+    <div className='max-w-xl mx-auto mt-12 mb-24 p-4 bg-gray-200 rounded-2xl'>
       <Head>
         <link rel='icon' href='/favicon.ico' />
         <meta
@@ -27,18 +26,18 @@ export default ({ children, home }) => {
         <meta name='twitter:card' content='summary_large_image' />
       </Head>
 
-      <header className={styles.header}>
+      <header className='flex flex-col items-center'>
         {home ? (
           <>
             <Image
               priority
               src='/static/images/profile.jpeg'
-              className={utilStyles.borderCircle}
+              className={styles.borderCircle}
               height={144}
               width={144}
               alt=''
             />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
+            <h1 className={styles.heading2Xl}>{name}</h1>
           </>
         ) : (
           <>
@@ -46,14 +45,14 @@ export default ({ children, home }) => {
               <Image
                 priority
                 src='/static/images/profile.jpeg'
-                className={utilStyles.borderCircle}
+                className={styles.borderCircle}
                 height={108}
                 width={108}
                 alt=''
               />
             </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href='/' className={utilStyles.colorInherit}>
+            <h2 className={styles.headingLg}>
+              <Link href='/' className={styles.colorInherit}>
                 {name}
               </Link>
             </h2>
@@ -62,7 +61,7 @@ export default ({ children, home }) => {
       </header>
       <main>{children}</main>
       {!home && (
-        <div className={styles.backToHome}>
+        <div className='m-12'>
           <Link href='/'>← Back to home</Link>
         </div>
       )}
