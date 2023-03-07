@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../styles/utils.module.css';
 
-const name = 'Your Name';
+const name = 'Waqar Qureshi';
 
 export const siteTitle = 'Next.js Sample Website';
 
