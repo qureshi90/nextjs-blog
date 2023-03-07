@@ -3,14 +3,30 @@ import Layout, { siteTitle } from '../components/layout';
 import { getSortedPostsData } from '../lib/posts.js';
 import utilStyles from '../styles/utils.module.css';
 
+// getStaticProps and getServerSideProps can only be exported from a page.
+// You can’t export it from non-page files.
+
+// One of the reasons for this restriction is that 
+// Next needs to have all the required data before the page is rendered.
+
+// To use Static-Site Generation, you need to export getStaticProps.
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
+  const allPostsData = getSortedPostsData(); // to get data
   return {
     props: {
       allPostsData,
     },
   };
 }
+
+// To use Server-Side Rendering, you need to export getServerSideProps.
+// export async function getServerSideProps(context) {
+//   return {
+//     props: {
+//       // props for your component
+//     },
+//   };
+// }
 
 export default ({ allPostsData }) => {
   return (
