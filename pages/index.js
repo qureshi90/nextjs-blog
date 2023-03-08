@@ -1,4 +1,6 @@
 import Head from 'next/head';
+import Link from 'next/link';
+import Date from '../components/date';
 import Layout, { siteTitle } from '../components/layout';
 import { getSortedPostsData } from '../lib/posts.js';
 import utilStyles from '../styles/utils.module.css';
@@ -6,7 +8,7 @@ import utilStyles from '../styles/utils.module.css';
 // getStaticProps and getServerSideProps can only be exported from a page.
 // You can’t export it from non-page files.
 
-// One of the reasons for this restriction is that 
+// One of the reasons for this restriction is that
 // Next needs to have all the required data before the page is rendered.
 
 // To use Static-Site Generation, you need to export getStaticProps.
@@ -51,11 +53,11 @@ export default ({ allPostsData }) => {
           <ul className={utilStyles.list}>
             {allPostsData.map(({ id, date, title }) => (
               <li className={utilStyles.listItem} key={id}>
-                {title}
+                <Link href={`/posts/${id}`}>{title}</Link>
                 <br />
-                {id}
-                <br />
-                {date}
+                <small className={utilStyles.lightText}>
+                  <Date dateString={date} />
+                </small>
               </li>
             ))}
           </ul>
